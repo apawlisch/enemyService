@@ -3,4 +3,111 @@
   <groupId>com.revature</groupId>
   <artifactId>EnemyService</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version>2.5.0</version>
+	<relativePath /> <!-- lookup parent from repository -->
+  </parent>
+  
+  <dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>bom</artifactId>
+			<version>2.15.43</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+	</dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter</artifactId>
+		<!-- exclude the default log4j 1 -->
+		<exclusions>
+			<exclusion>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-logging</artifactId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+		<!-- Then we can grab log4j2 -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-log4j2</artifactId>
+	</dependency>
+	
+	<!-- Datastax Cassandra Driver -->
+	<dependency>
+		<groupId>com.datastax.oss</groupId>
+		<artifactId>java-driver-core</artifactId>
+	</dependency>
+
+	<!-- AWS plugin for Cassandra authentication -->
+	<dependency>
+		<groupId>software.aws.mcs</groupId>
+		<artifactId>aws-sigv4-auth-cassandra-java-driver-plugin</artifactId>
+		<version>4.0.4</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpcore</artifactId>
+	</dependency>
+	<!-- Spring Web Flux is a Reactive Web Framework -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-webflux</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-aop</artifactId>
+	</dependency>
+	
+	<!--  DevTools to make deployment easier, auto-restarts server -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+	</dependency>
+	
+	<!-- Spring Boot Actuator: Gives us some restful endpoints for web application 
+		metrics such as /health, /beans/, and /metrics -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-actuator</artifactId>
+	</dependency>
+	
+	<!-- provides you with JUnit, SpringTest (Spring Boot Test), AssertJ, Hamcrest, 
+		Mockito, JSONassert, and JSONPath. -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-cassandra</artifactId>
+	</dependency>
+	
+	<dependency>
+		<groupId>io.projectreactor</groupId>
+		<artifactId>reactor-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>com.intuit.karate</groupId>
+		<artifactId>karate-junit5</artifactId>
+		<version>1.1.0</version>
+		<scope>test</scope>
+	</dependency>
+	
+  </dependencies>
 </project>
