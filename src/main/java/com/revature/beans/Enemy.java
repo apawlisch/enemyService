@@ -21,13 +21,18 @@ public class Enemy implements Serializable {
 
 	public Enemy(String name, Type type, Integer currentHitPoints, Integer maxHitPoints, Integer speed,
 			Integer initiative) {
-		super();
+		this();
 		this.name = name;
 		this.type = type;
 		this.currentHitPoints = currentHitPoints;
 		this.maxHitPoints = maxHitPoints;
 		this.speed = speed;
 		this.initiative = initiative;
+	}
+
+	public Enemy(String name) {
+		this();
+		this.name = name;
 	}
 
 	public String getName() {
